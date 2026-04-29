@@ -3,200 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GMU PhD Application Roadmap | Ding Hui</title>
+  <title>GMU PhD Application Dashboard v2 | Ding Hui</title>
   <style>
-    :root {
-      --bg: #f7f4ee;
-      --card: #ffffff;
-      --ink: #202124;
-      --muted: #6b7280;
-      --line: #e5ded2;
-      --accent: #8a5a28;
-      --accent2: #1f4e5f;
-      --soft: #efe7da;
-      --green: #2f6f4e;
-      --red: #9f3a38;
-      --blue: #2f5f8f;
-      --shadow: 0 18px 50px rgba(32, 33, 36, 0.08);
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
-      background: radial-gradient(circle at top left, #fff7e8 0, transparent 32%), var(--bg);
-      color: var(--ink);
-      line-height: 1.65;
-    }
-    a { color: var(--accent2); text-decoration: none; }
-    .wrap { max-width: 1180px; margin: 0 auto; padding: 36px 22px 72px; }
-    .hero {
-      background: linear-gradient(135deg, #ffffff 0%, #f3eadc 100%);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 42px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero:after {
-      content: "";
-      position: absolute;
-      right: -90px;
-      top: -90px;
-      width: 260px;
-      height: 260px;
-      border-radius: 999px;
-      background: rgba(138, 90, 40, 0.12);
-    }
-    .eyebrow { color: var(--accent); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; }
-    h1 { font-size: clamp(34px, 5vw, 64px); line-height: 1.08; margin: 12px 0 18px; letter-spacing: -0.04em; }
-    .subtitle { font-size: 20px; color: #3b3b3b; max-width: 860px; margin: 0; }
-    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
-    .chip { padding: 8px 13px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); font-size: 14px; color: #3f3f46; }
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; margin-top: 24px; }
-    .card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 24px; box-shadow: 0 8px 28px rgba(32,33,36,.045); }
-    .span-4 { grid-column: span 4; }
-    .span-6 { grid-column: span 6; }
-    .span-8 { grid-column: span 8; }
-    .span-12 { grid-column: span 12; }
-    h2 { font-size: 28px; margin: 0 0 14px; letter-spacing: -0.02em; }
-    h3 { font-size: 18px; margin: 0 0 10px; }
-    p { margin: 0 0 12px; }
-    .muted { color: var(--muted); }
-    .big-number { font-size: 42px; font-weight: 800; color: var(--accent2); margin-bottom: 4px; }
-    .map { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 14px; align-items: center; margin-top: 14px; }
-    .node { background: var(--soft); border: 1px solid var(--line); border-radius: 18px; padding: 18px; min-height: 112px; }
-    .arrow { font-size: 30px; color: var(--accent); }
-    .timeline { position: relative; padding-left: 22px; }
-    .timeline:before { content:""; position:absolute; left:7px; top:6px; bottom:6px; width:2px; background: var(--line); }
-    .titem { position: relative; margin: 18px 0; padding-left: 18px; }
-    .titem:before { content:""; position:absolute; left:-21px; top:7px; width:12px; height:12px; border-radius:999px; background: var(--accent2); border:3px solid #fff; box-shadow:0 0 0 1px var(--line); }
-    .tag { display:inline-block; padding:3px 9px; border-radius:999px; background:#eef3f5; color:var(--accent2); font-size:12px; font-weight:700; margin-bottom:6px; }
-    .matrix { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 16px; }
-    .matrix th, .matrix td { border-bottom: 1px solid var(--line); padding: 13px 12px; text-align: left; vertical-align: top; }
-    .matrix th { background: #f4eee5; color: #3b342b; }
-    .matrix tr:last-child td { border-bottom: none; }
-    .pill { display:inline-block; padding:4px 9px; border-radius:999px; font-size:12px; font-weight:700; }
-    .pill.green { background:#e8f3ed; color:var(--green); }
-    .pill.blue { background:#e7eff7; color:var(--blue); }
-    .pill.red { background:#f7e8e7; color:var(--red); }
-    .quote { font-size: 22px; font-weight: 700; line-height: 1.45; color: #2b2b2b; border-left: 5px solid var(--accent); padding-left: 18px; margin-top: 8px; }
-    .emailbox { background:#111827; color:#f9fafb; border-radius:18px; padding:20px; white-space:pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 14px; overflow-x:auto; }
-    .footer { margin-top: 28px; text-align: center; color: var(--muted); font-size: 14px; }
-    ul { margin: 8px 0 0 20px; padding: 0; }
-    li { margin: 5px 0; }
-    @media (max-width: 850px) {
-      .hero { padding: 28px; }
-      .span-4, .span-6, .span-8 { grid-column: span 12; }
-      .map { grid-template-columns: 1fr; }
-      .arrow { transform: rotate(90deg); text-align:center; }
-    }
+    :root { --bg:#f7f4ee; --card:#fff; --ink:#202124; --muted:#6b7280; --line:#e5ded2; --accent:#8a5a28; --accent2:#1f4e5f; --soft:#efe7da; --green:#2f6f4e; --red:#9f3a38; --blue:#2f5f8f; --amber:#a16207; --shadow:0 18px 50px rgba(32,33,36,.08); }
+    *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;background:radial-gradient(circle at top left,#fff7e8 0,transparent 32%),var(--bg);color:var(--ink);line-height:1.65} a{color:var(--accent2);text-decoration:none}.wrap{max-width:1240px;margin:0 auto;padding:36px 22px 72px}.hero{background:linear-gradient(135deg,#fff 0%,#f3eadc 100%);border:1px solid var(--line);border-radius:28px;padding:42px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;right:-90px;top:-90px;width:260px;height:260px;border-radius:999px;background:rgba(138,90,40,.12)}.eyebrow{color:var(--accent);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:13px}h1{font-size:clamp(34px,5vw,64px);line-height:1.08;margin:12px 0 18px;letter-spacing:-.04em}.subtitle{font-size:20px;color:#3b3b3b;max-width:900px;margin:0}.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.chip{padding:8px 13px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:14px;color:#3f3f46}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;margin-top:24px}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 8px 28px rgba(32,33,36,.045)}.span-3{grid-column:span 3}.span-4{grid-column:span 4}.span-5{grid-column:span 5}.span-6{grid-column:span 6}.span-7{grid-column:span 7}.span-8{grid-column:span 8}.span-12{grid-column:span 12}h2{font-size:28px;margin:0 0 14px;letter-spacing:-.02em}h3{font-size:18px;margin:0 0 10px}p{margin:0 0 12px}.muted{color:var(--muted)}.big-number{font-size:42px;font-weight:900;color:var(--accent2);margin-bottom:4px}.kpi{font-size:34px;font-weight:900;color:var(--accent2);line-height:1}.progress{height:12px;background:#eee7dc;border-radius:999px;overflow:hidden;margin:14px 0 6px}.bar{height:100%;background:linear-gradient(90deg,var(--accent2),var(--green));border-radius:999px}.map{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:center;margin-top:14px}.node{background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:18px;min-height:112px}.arrow{font-size:30px;color:var(--accent)}.timeline{position:relative;padding-left:22px}.timeline:before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}.titem{position:relative;margin:18px 0;padding-left:18px}.titem:before{content:"";position:absolute;left:-21px;top:7px;width:12px;height:12px;border-radius:999px;background:var(--accent2);border:3px solid #fff;box-shadow:0 0 0 1px var(--line)}.tag{display:inline-block;padding:3px 9px;border-radius:999px;background:#eef3f5;color:var(--accent2);font-size:12px;font-weight:800;margin-bottom:6px}.matrix{width:100%;border-collapse:collapse;overflow:hidden;border-radius:16px}.matrix th,.matrix td{border-bottom:1px solid var(--line);padding:13px 12px;text-align:left;vertical-align:top}.matrix th{background:#f4eee5;color:#3b342b}.matrix tr:last-child td{border-bottom:none}.pill{display:inline-block;padding:4px 9px;border-radius:999px;font-size:12px;font-weight:800}.green{background:#e8f3ed;color:var(--green)}.blue{background:#e7eff7;color:var(--blue)}.red{background:#f7e8e7;color:var(--red)}.amber{background:#fff3d6;color:var(--amber)}.quote{font-size:22px;font-weight:800;line-height:1.45;color:#2b2b2b;border-left:5px solid var(--accent);padding-left:18px;margin-top:8px}.emailbox{background:#111827;color:#f9fafb;border-radius:18px;padding:20px;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;overflow-x:auto}.footer{margin-top:28px;text-align:center;color:var(--muted);font-size:14px}ul{margin:8px 0 0 20px;padding:0}li{margin:5px 0}details{border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:12px 0;background:#fffdf9}summary{cursor:pointer;font-weight:800;color:#2f2f2f}.kanban{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.lane{background:#fbf8f2;border:1px solid var(--line);border-radius:18px;padding:14px}.task{background:white;border:1px solid var(--line);border-radius:14px;padding:12px;margin:10px 0}.small{font-size:13px}.check{font-weight:900;color:var(--green)}.warn{font-weight:900;color:var(--amber)}.danger{font-weight:900;color:var(--red)}@media(max-width:900px){.hero{padding:28px}.span-3,.span-4,.span-5,.span-6,.span-7,.span-8{grid-column:span 12}.map,.kanban{grid-template-columns:1fr}.arrow{transform:rotate(90deg);text-align:center}.matrix{font-size:14px}}
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="hero">
-      <div class="eyebrow">GMU Public Policy PhD · Fall 2027 Application System</div>
-      <h1>丁惠 GMU‑PhD 申请路线图</h1>
-      <p class="subtitle">把十余年国际贸易、供应链与拉美复杂政策环境经验，转化为一个清晰、可信、可执行的 Public Policy PhD 申请项目。</p>
-      <div class="chips">
-        <span class="chip">目标：GMU Schar School</span>
-        <span class="chip">项目：Public Policy PhD</span>
-        <span class="chip">方向：Trade · Institutions · Firm Behavior</span>
-        <span class="chip">提交：2026 年 12 月</span>
-        <span class="chip">入学：2027 Fall</span>
-      </div>
-    </section>
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">GMU Public Policy PhD · Application Dashboard v2</div>
+    <h1>丁惠 GMU‑PhD 申请控制台</h1>
+    <p class="subtitle">从“计划”升级为“执行系统”：研究定位、材料包、教授 Pipeline、推荐信、邮件节奏和风险控制集中到一页管理。</p>
+    <div class="chips"><span class="chip">目标：GMU Schar School</span><span class="chip">项目：Public Policy PhD</span><span class="chip">方向：Trade · Institutions · Firm Behavior</span><span class="chip">提交：2026 年 12 月</span><span class="chip">入学：2027 Fall</span><span class="chip">版本：v2 Dashboard</span></div>
+  </section>
 
-    <section class="grid">
-      <div class="card span-4">
-        <div class="big-number">01</div>
-        <h3>核心定位</h3>
-        <p>这不是简单转行，而是把一线贸易实践升级为政策研究能力。</p>
-        <p class="muted">关键词：现实问题、政策含义、企业层面观察。</p>
-      </div>
-      <div class="card span-4">
-        <div class="big-number">02</div>
-        <h3>研究主线</h3>
-        <p>制度不稳定环境中，贸易政策冲击如何影响企业行为、资源配置与供应链结构。</p>
-        <p class="muted">英文方向：Political Economy of Trade and Institutions。</p>
-      </div>
-      <div class="card span-4">
-        <div class="big-number">03</div>
-        <h3>执行原则</h3>
-        <p>先打磨研究想法，再小范围联系教授，最后进入正式申请材料冲刺。</p>
-        <p class="muted">像 BD pipeline 一样管理教授沟通。</p>
-      </div>
-    </section>
+  <section class="grid">
+    <div class="card span-3"><div class="kpi">35%</div><h3>总体准备度</h3><div class="progress"><div class="bar" style="width:35%"></div></div><p class="muted small">方向与初稿已成型；CV、推荐信、数据抓手仍需补齐。</p></div>
+    <div class="card span-3"><div class="kpi">5</div><h3>核心材料</h3><p class="muted small">SOP / Research Idea / Research Statement / CV / LOR Strategy。</p></div>
+    <div class="card span-3"><div class="kpi">3层</div><h3>导师策略</h3><p class="muted small">Anchor + Backup + Optional，先试水再扩展。</p></div>
+    <div class="card span-3"><div class="kpi">7天</div><h3>Follow-up规则</h3><p class="muted small">首封后 7 天只跟进一次；不焦虑、不连发。</p></div>
+  </section>
 
-    <section class="grid">
-      <div class="card span-12">
-        <h2>一张图看懂申请逻辑</h2>
-        <div class="map">
-          <div class="node"><h3>真实经历</h3><p>国际贸易、出口、供应链管理；中国—拉美贸易；委内瑞拉、阿根廷等高不确定性环境。</p></div>
-          <div class="arrow">→</div>
-          <div class="node"><h3>研究问题</h3><p>政策冲击如何影响企业生存、资源错配与供应链重构？</p></div>
-          <div class="arrow">→</div>
-          <div class="node"><h3>博士目标</h3><p>通过 GMU Public Policy PhD，形成系统研究方法与可发表成果。</p></div>
-        </div>
-      </div>
-    </section>
+  <section class="grid"><div class="card span-12"><h2>一张图看懂申请逻辑</h2><div class="map"><div class="node"><h3>真实经历</h3><p>国际贸易、出口、供应链管理；中国—拉美贸易；委内瑞拉、阿根廷等高不确定性环境。</p></div><div class="arrow">→</div><div class="node"><h3>研究问题</h3><p>政策冲击如何影响企业生存、资源错配与供应链重构？</p></div><div class="arrow">→</div><div class="node"><h3>博士目标</h3><p>通过 GMU Public Policy PhD，形成系统研究方法与可发表成果。</p></div></div></div></section>
 
-    <section class="grid">
-      <div class="card span-6">
-        <h2>Research Idea</h2>
-        <p class="quote">How do policy shocks in institutionally unstable environments affect firm survival, resource allocation, and supply chain restructuring?</p>
-        <ul>
-          <li><strong>Firm Survival：</strong>贸易限制是否影响出口企业存活率？</li>
-          <li><strong>Resource Allocation：</strong>政策不确定性是否导致资源错配？</li>
-          <li><strong>Supply Chain Adjustment：</strong>企业如何重构供应链以应对制度不稳定？</li>
-        </ul>
-      </div>
-      <div class="card span-6">
-        <h2>Why Me / Why Now / Why GMU</h2>
-        <table class="matrix">
-          <tr><th>问题</th><th>回答</th></tr>
-          <tr><td><strong>Why Me</strong></td><td>丁惠拥有非传统但有价值的一线贸易与供应链经验，能识别真实政策问题。</td></tr>
-          <tr><td><strong>Why Now</strong></td><td>经验积累已经足够，但需要 PhD 的方法训练，把经验转为严谨研究。</td></tr>
-          <tr><td><strong>Why GMU</strong></td><td>GMU Schar School 政策导向强，位于 DC 政策生态圈，适合现实问题导向研究。</td></tr>
-        </table>
-      </div>
-    </section>
+  <section class="grid">
+    <div class="card span-6"><h2>核心研究问题</h2><p class="quote">How do policy shocks in institutionally unstable environments affect firm survival, resource allocation, and supply chain restructuring?</p><ul><li><strong>Firm Survival：</strong>贸易限制是否影响出口企业存活率？</li><li><strong>Resource Allocation：</strong>政策不确定性是否导致资源错配？</li><li><strong>Supply Chain Adjustment：</strong>企业如何重构供应链？</li></ul></div>
+    <div class="card span-6"><h2>Why Me / Why Now / Why GMU</h2><table class="matrix"><tr><th>问题</th><th>回答</th></tr><tr><td><strong>Why Me</strong></td><td>非传统但有价值的一线贸易与供应链经验，能识别真实政策问题。</td></tr><tr><td><strong>Why Now</strong></td><td>经验足够，但需要 PhD 的方法训练，把经验转为严谨研究。</td></tr><tr><td><strong>Why GMU</strong></td><td>Schar School 政策导向强，位于 DC 政策生态圈，适合现实问题导向研究。</td></tr></table></div>
+  </section>
 
-    <section class="grid">
-      <div class="card span-8">
-        <h2>申请时间线</h2>
-        <div class="timeline">
-          <div class="titem"><span class="tag">2026 Q1–Q2</span><h3>研究定位期</h3><p>明确研究问题，梳理数据与方法，形成一页 Research Idea Summary。</p></div>
-          <div class="titem"><span class="tag">2026 Q2–Q3</span><h3>教授沟通期</h3><p>先联系 2–3 位教授试水，根据反馈优化表达，再扩展到 5–8 位。</p></div>
-          <div class="titem"><span class="tag">2026 Q3–Q4</span><h3>材料冲刺期</h3><p>完成 SOP、Research Statement、CV、推荐信组合与申请系统材料。</p></div>
-          <div class="titem"><span class="tag">2026 Dec</span><h3>正式提交</h3><p>完成 GMU Public Policy PhD 申请提交。</p></div>
-          <div class="titem"><span class="tag">2027 Feb–Mar</span><h3>录取结果</h3><p>等待结果；如录取，进入签证、搬迁与入学准备。</p></div>
-        </div>
-      </div>
-      <div class="card span-4">
-        <h2>导师匹配</h2>
-        <p><span class="pill green">Anchor</span> <strong>Kenneth A. Reinert</strong><br/>国际贸易政策、全球化、发展经济学。</p>
-        <p><span class="pill blue">Backup</span> <strong>Maurice Kugler</strong><br/>国际贸易、外商投资、企业与劳动力市场。</p>
-        <p><span class="pill red">Optional</span> <strong>John S. Earle</strong><br/>政治经济学、企业行为、制度环境。</p>
-      </div>
-    </section>
+  <section class="grid">
+    <div class="card span-12"><h2>执行看板：从现在到提交</h2><div class="kanban">
+      <div class="lane"><h3>Now · 立即做</h3><div class="task"><span class="pill green">Done</span><p>SOP 初稿已形成。</p></div><div class="task"><span class="pill green">Done</span><p>Research Idea 一页纸已形成。</p></div><div class="task"><span class="pill amber">Next</span><p>补充数据抓手：firm-level trade data / customs records / policy changes。</p></div></div>
+      <div class="lane"><h3>May–Jun 2026</h3><div class="task"><span class="pill amber">Build</span><p>精修 CV，把行业经历转译成研究潜力。</p></div><div class="task"><span class="pill amber">Build</span><p>形成第一轮教授名单 2–3 人。</p></div><div class="task"><span class="pill blue">Draft</span><p>Research Statement 扩写版。</p></div></div>
+      <div class="lane"><h3>Jul–Sep 2026</h3><div class="task"><span class="pill blue">Outreach</span><p>小范围发教授邮件，观察反馈。</p></div><div class="task"><span class="pill blue">Iterate</span><p>根据反馈更新 Research Idea 和 SOP。</p></div><div class="task"><span class="pill amber">Plan</span><p>锁定 3 封推荐信组合。</p></div></div>
+      <div class="lane"><h3>Oct–Dec 2026</h3><div class="task"><span class="pill red">Submit</span><p>最终材料包定稿。</p></div><div class="task"><span class="pill red">Submit</span><p>GMU 系统提交。</p></div><div class="task"><span class="pill red">Prepare</span><p>准备潜在面试与 follow-up。</p></div></div>
+    </div></div>
+  </section>
 
-    <section class="grid">
-      <div class="card span-6">
-        <h2>第一封教授邮件策略</h2>
-        <ul>
-          <li><strong>能不能直接发？</strong> 可以。美国 PhD 申请中，这是常见且合理的 academic inquiry。</li>
-          <li><strong>什么时候发？</strong> 周二至周四，美国东部上午 8:30–10:30；西班牙傍晚发送较合适。</li>
-          <li><strong>先发给谁？</strong> 第一轮只发 2–3 位，优先 Reinert + 1 位 backup。</li>
-          <li><strong>期待结果？</strong> 不是让教授承诺录取，而是建立弱连接、测试匹配度、获得反馈。</li>
-          <li><strong>Follow up？</strong> 7 天后只跟进一次；无回复就放下，不反复追。</li>
-        </ul>
-      </div>
-      <div class="card span-6">
-        <h2>推荐邮件标题与正文</h2>
-        <p><strong>Subject:</strong> Prospective PhD Applicant – Trade and Institutions Research Interest</p>
-        <div class="emailbox">Dear Professor Reinert,
+  <section class="grid">
+    <div class="card span-7"><h2>交互式时间线</h2>
+      <details open><summary>2026 Q1–Q2 · 研究定位期</summary><ul><li>明确核心研究问题。</li><li>梳理拉美案例：委内瑞拉、阿根廷等。</li><li>补充潜在数据来源，避免“只有经验、没有方法”。</li></ul></details>
+      <details><summary>2026 Q2–Q3 · 教授沟通期</summary><ul><li>第一轮只发 2–3 位教授。</li><li>邮件保持 150–180 词左右。</li><li>目标不是求录取，而是测试匹配度和获得反馈。</li></ul></details>
+      <details><summary>2026 Q3–Q4 · 材料冲刺期</summary><ul><li>SOP 强化 Why GMU。</li><li>Research Statement 增加方法、文献位置和数据路径。</li><li>CV 突出国际贸易、拉美、供应链、分析能力。</li></ul></details>
+      <details><summary>2026 Dec · 正式提交</summary><ul><li>检查项目要求、截止日期、推荐信是否提交。</li><li>所有材料保持同一条主线：trade policy × institutions × firm behavior。</li></ul></details>
+    </div>
+    <div class="card span-5"><h2>教授 Pipeline</h2><table class="matrix"><tr><th>层级</th><th>教授</th><th>动作</th></tr><tr><td><span class="pill green">A</span></td><td>Kenneth A. Reinert</td><td>第一轮首发；主匹配。</td></tr><tr><td><span class="pill blue">B</span></td><td>Maurice Kugler</td><td>第一轮或第二轮；企业与贸易补充。</td></tr><tr><td><span class="pill amber">C</span></td><td>John S. Earle</td><td>暂不急发；用于理论与委员会匹配。</td></tr><tr><td><span class="pill red">TBD</span></td><td>其他 Schar / Econ / Policy faculty</td><td>等第一轮反馈后扩展。</td></tr></table><p class="muted small">Pipeline 心法：先小样本试水，别一口气群发。像钓鱼，先看水温。🎣</p></div>
+  </section>
+
+  <section class="grid">
+    <div class="card span-6"><h2>推荐信策略 v2</h2><table class="matrix"><tr><th>推荐人类型</th><th>证明什么</th><th>理想内容</th></tr><tr><td>业务/管理上级</td><td>执行力、责任感、复杂环境判断</td><td>国际贸易、供应链、跨文化协作、复杂问题处理。</td></tr><tr><td>学术/方法背景人士</td><td>学习能力、研究潜力</td><td>系统学习能力、分析能力、写作能力。</td></tr><tr><td>客户/合作伙伴或资深行业人士</td><td>行业可信度、真实问题洞察</td><td>对拉美贸易、政策不确定性、企业决策的理解。</td></tr></table><p class="muted small">推荐信不是“夸人”，而是补齐申请材料看不见的证据。</p></div>
+    <div class="card span-6"><h2>材料状态表</h2><table class="matrix"><tr><th>材料</th><th>状态</th><th>下一步</th></tr><tr><td>SOP</td><td><span class="pill green">初稿完成</span></td><td>压缩语言，强化 GMU fit。</td></tr><tr><td>Research Idea</td><td><span class="pill green">初稿完成</span></td><td>增加数据来源和方法可行性。</td></tr><tr><td>Research Statement</td><td><span class="pill blue">待扩展</span></td><td>从一页纸扩成 2–3 页。</td></tr><tr><td>CV</td><td><span class="pill amber">待重构</span></td><td>按 PhD 申请逻辑改写。</td></tr><tr><td>推荐信</td><td><span class="pill red">待规划</span></td><td>锁定 3 类推荐人。</td></tr></table></div>
+  </section>
+
+  <section class="grid">
+    <div class="card span-6"><h2>第一封邮件策略</h2><ul><li><strong>可以直接发吗？</strong> 可以，这是合理的 academic inquiry。</li><li><strong>最佳时间：</strong>周二至周四，美国东部上午 8:30–10:30；西班牙傍晚发送。</li><li><strong>第一轮：</strong>只发 2–3 位，优先 Anchor + Backup。</li><li><strong>期待结果：</strong>建立弱连接、测试匹配度、争取反馈。</li><li><strong>Follow-up：</strong>7 天后只跟进一次。</li></ul></div>
+    <div class="card span-6"><h2>推荐邮件模板</h2><p><strong>Subject:</strong> Prospective PhD Applicant – Trade and Institutions Research Interest</p><div class="emailbox">Dear Professor Reinert,
 
 I hope this message finds you well.
 
@@ -211,40 +73,12 @@ I would be grateful if I could share a brief one-page research idea with you to 
 Thank you very much for your time.
 
 Best regards,
-Ding Hui</div>
-      </div>
-    </section>
+Ding Hui</div></div>
+  </section>
 
-    <section class="grid">
-      <div class="card span-12">
-        <h2>材料体系：从一个想法到完整申请包</h2>
-        <table class="matrix">
-          <tr><th>材料</th><th>作用</th><th>当前状态</th><th>下一步</th></tr>
-          <tr><td>SOP</td><td>讲清申请动机、经历、研究兴趣与 GMU 匹配。</td><td><span class="pill green">已有初稿</span></td><td>压缩到 1–2 页，强化 Why GMU。</td></tr>
-          <tr><td>Research Idea Summary</td><td>给导师看的核心武器，一页讲清研究问题。</td><td><span class="pill green">已有初稿</span></td><td>补充数据抓手与方法可行性。</td></tr>
-          <tr><td>Research Statement</td><td>更学术、更系统地展开研究问题、文献位置与方法。</td><td><span class="pill blue">待扩展</span></td><td>从 Research Idea 扩写。</td></tr>
-          <tr><td>CV</td><td>把行业经历转译成研究潜力与政策相关经验。</td><td><span class="pill blue">待整理</span></td><td>突出国际贸易、拉美、供应链、数据/分析能力。</td></tr>
-          <tr><td>推荐信</td><td>证明能力、可信度、执行力与研究潜力。</td><td><span class="pill red">待规划</span></td><td>设计 3 封推荐信组合。</td></tr>
-        </table>
-      </div>
-    </section>
+  <section class="grid"><div class="card span-12"><h2>风险控制</h2><table class="matrix"><tr><th>风险</th><th>表现</th><th>应对</th><th>状态</th></tr><tr><td>研究问题太业务化</td><td>像经历说明，不像 PhD 研究。</td><td>使用 policy shocks、firm survival、misallocation 等学术抓手。</td><td><span class="check">已初步解决</span></td></tr><tr><td>数据可行性不足</td><td>导师担心无法做实证研究。</td><td>补充 customs records、firm-level trade data、country-specific policy changes。</td><td><span class="warn">需加强</span></td></tr><tr><td>非传统背景被低估</td><td>缺论文、缺标准学术路径。</td><td>强调真实问题识别能力、政策含义、企业层面观察。</td><td><span class="warn">需材料支撑</span></td></tr><tr><td>教授邮件无回复</td><td>常见，不代表否定。</td><td>短邮件、轻请求、7 天后一次 follow-up。</td><td><span class="check">策略明确</span></td></tr><tr><td>材料不一致</td><td>SOP、邮件、Research Statement 各讲各的。</td><td>所有材料统一围绕同一个核心问题。</td><td><span class="check">已统一主线</span></td></tr></table></div></section>
 
-    <section class="grid">
-      <div class="card span-12">
-        <h2>风险控制</h2>
-        <table class="matrix">
-          <tr><th>风险</th><th>表现</th><th>应对</th></tr>
-          <tr><td>研究问题太像业务经验</td><td>像故事，不像 PhD 研究。</td><td>使用 policy shocks、firm survival、misallocation 等学术抓手。</td></tr>
-          <tr><td>非传统背景被低估</td><td>缺论文、缺标准学术路径。</td><td>强调现实问题识别能力、企业层面观察、政策意义。</td></tr>
-          <tr><td>教授邮件被忽略</td><td>无回复是常态。</td><td>短邮件、轻请求、一页研究想法、7 天后仅 follow up 一次。</td></tr>
-          <tr><td>材料分散</td><td>SOP、Research Statement、邮件说法不一致。</td><td>所有材料统一围绕一句核心问题展开。</td></tr>
-        </table>
-      </div>
-    </section>
-
-    <div class="footer">
-      GMU‑PhD Application Roadmap · Built for Ding Hui · Version 2026-04-29
-    </div>
-  </main>
+  <div class="footer">GMU‑PhD Application Dashboard · Built for Ding Hui · Version 2 · 2026-04-29</div>
+</main>
 </body>
 </html>
