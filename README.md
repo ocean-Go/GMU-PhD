@@ -4,20 +4,22 @@ The strategical path to a GMU Public Policy PhD (Schar School, Fall 2027) — a 
 
 Research direction: **Trade · Institutions · Firm Behavior** — *How do policy shocks in institutionally unstable environments affect firm survival, resource allocation, and supply chain restructuring?*
 
-## Dashboards
+## Pages
 
-| Version | Page | Focus |
-| --- | --- | --- |
-| v2 | [`index.html`](index.html) | Full application dashboard: research positioning, materials, timeline, kanban, risk control |
-| v3 | [`v3.html`](v3.html) | Professor CRM + Research Idea evolution track |
-| v4 | [`v4.html`](v4.html) | **Control center** — live deadline countdown, an interactive checklist that persists in your browser, plus a unified CRM / research / materials view |
-| v5 | [`v5.html`](v5.html) | **Project plan** — milestone-driven roadmap (M1→M10) toward admission, a verified GMU requirements/process section, and a built-in weekly information-verification panel |
+The home page (`index.html`) is the **Project Plan** — open it first. Earlier versions are kept for reference and linked from the top nav.
 
-All pages share a top navigation bar so you can move between versions.
+| Page | Focus |
+| --- | --- |
+| [`index.html`](index.html) | **Project plan (home)** — clickable milestone timeline at the top (M1→M10), milestone roadmap with exit criteria, a verified GMU requirements/process section, and a built-in weekly information-verification panel |
+| [`v2.html`](v2.html) | Full application dashboard: research positioning, materials, kanban, risk control |
+| [`v3.html`](v3.html) | Professor CRM + Research Idea evolution track |
+| [`v4.html`](v4.html) | Control center — live deadline countdown, interactive checklist, unified CRM / research / materials view |
+
+All pages share a top navigation bar so you can move between them.
 
 ## GMU requirements (last verified 2026-06-19)
 
-`v5.html` tracks the official Schar School Public Policy PhD requirements. Snapshot — **re-verify weekly against the official site** (items that change per cycle are flagged):
+The home page (`index.html`) tracks the official Schar School Public Policy PhD requirements. Snapshot — **re-verify weekly against the official site** (items that change per cycle are flagged):
 
 - **Term:** Fall only. Fall 2027 applications expected to open **~Sept 2026**.
 - **Deadline:** *To be confirmed for Fall 2027.* Historically priority ≈ Dec 15 / final ≈ Mar 1. Plan targets a **Dec 2026** submission with buffer.
