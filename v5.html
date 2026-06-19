@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GMU PhD Project Plan v5 | Hui Ding</title>
+  <style>
+    :root{--bg:#f7f4ee;--card:#fff;--ink:#202124;--muted:#6b7280;--line:#e5ded2;--accent:#8a5a28;--accent2:#1f4e5f;--soft:#efe7da;--green:#2f6f4e;--red:#9f3a38;--blue:#2f5f8f;--amber:#a16207;--shadow:0 18px 50px rgba(32,33,36,.08)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;background:radial-gradient(circle at top left,#fff7e8 0,transparent 32%),var(--bg);color:var(--ink);line-height:1.65}
+    a{color:var(--accent2);text-decoration:none}
+    .wrap{max-width:1240px;margin:0 auto;padding:24px 22px 72px}
+    .nav{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:rgba(247,244,238,.82);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:999px;padding:8px 12px;margin-bottom:24px;box-shadow:0 6px 20px rgba(32,33,36,.05)}
+    .nav b{font-weight:900;letter-spacing:-.02em;margin:0 6px}
+    .nav a{padding:6px 13px;border-radius:999px;font-size:14px;font-weight:700;color:#3f3f46;border:1px solid transparent}
+    .nav a:hover{background:var(--card);border-color:var(--line)}
+    .nav a.active{background:var(--accent2);color:#fff}
+    .nav .spacer{flex:1}
+    .hero{background:linear-gradient(135deg,#fff 0%,#f3eadc 100%);border:1px solid var(--line);border-radius:28px;padding:38px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .hero:after{content:"";position:absolute;right:-90px;top:-90px;width:260px;height:260px;border-radius:999px;background:rgba(138,90,40,.12)}
+    .eyebrow{color:var(--accent);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:13px}
+    h1{font-size:clamp(30px,5vw,52px);line-height:1.1;margin:12px 0 14px;letter-spacing:-.04em}
+    .subtitle{font-size:18px;color:#3b3b3b;max-width:920px;margin:0}
+    .goal{display:inline-flex;align-items:center;gap:10px;margin-top:18px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 18px;font-weight:800;color:var(--accent2)}
+    .goal .dot{width:12px;height:12px;border-radius:999px;background:var(--green)}
+    .countdown{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .cdcell{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 16px;text-align:center;min-width:78px}
+    .cdcell .num{font-size:28px;font-weight:900;color:var(--accent2);line-height:1}
+    .cdcell .lab{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:4px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;margin-top:22px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 8px 28px rgba(32,33,36,.045)}
+    .span-3{grid-column:span 3}.span-4{grid-column:span 4}.span-5{grid-column:span 5}.span-6{grid-column:span 6}.span-7{grid-column:span 7}.span-8{grid-column:span 8}.span-12{grid-column:span 12}
+    h2{font-size:25px;margin:0 0 6px;letter-spacing:-.02em}
+    h3{font-size:17px;margin:0 0 6px}
+    p{margin:0 0 12px}
+    .muted{color:var(--muted)}.small{font-size:13px}
+    .kpi{font-size:32px;font-weight:900;color:var(--accent2);line-height:1}
+    .progress{height:12px;background:#eee7dc;border-radius:999px;overflow:hidden;margin:14px 0 6px}
+    .bar{height:100%;background:linear-gradient(90deg,var(--accent2),var(--green));border-radius:999px;transition:width .4s ease}
+    .pill{display:inline-block;padding:4px 9px;border-radius:999px;font-size:12px;font-weight:800}
+    .green{background:#e8f3ed;color:var(--green)}.blue{background:#e7eff7;color:var(--blue)}.red{background:#f7e8e7;color:var(--red)}.amber{background:#fff3d6;color:var(--amber)}.grey{background:#eee;color:#555}
+    .matrix{width:100%;border-collapse:collapse}
+    .matrix th,.matrix td{border-bottom:1px solid var(--line);padding:11px 12px;text-align:left;vertical-align:top}
+    .matrix th{background:#f4eee5;color:#3b342b}
+    .matrix tr:last-child td{border-bottom:none}
+    /* milestone list */
+    .ms{display:flex;gap:16px;padding:16px 0;border-bottom:1px dashed var(--line);align-items:flex-start}
+    .ms:last-child{border-bottom:none}
+    .ms .mcheck{flex:none;margin-top:2px}
+    .ms .mcheck input{width:22px;height:22px;accent-color:var(--green);cursor:pointer}
+    .ms .body{flex:1}
+    .ms .top{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+    .ms .code{font-weight:900;color:var(--accent2);font-size:15px;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:2px 8px}
+    .ms .when{margin-left:auto;font-size:12px;color:var(--muted);font-weight:700}
+    .ms.done h3{text-decoration:line-through;color:var(--muted)}
+    .ms .exit{font-size:13px;color:#444;margin-top:4px}
+    .ms .exit b{color:var(--accent)}
+    /* verification panel */
+    .verify{border:1px solid var(--line);border-radius:18px;padding:16px 18px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+    .verify.ok{background:#f1f8f3;border-color:#cfe6d8}
+    .verify.due{background:#fff6e8;border-color:#f0dcb4}
+    .verify .vstat{font-weight:900;font-size:16px}
+    .verify .spacer{flex:1}
+    .btn{background:var(--accent2);color:#fff;border:none;border-radius:999px;padding:9px 16px;font-size:13px;font-weight:800;cursor:pointer}
+    .btn:hover{opacity:.92}
+    .reset{background:none;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:12px;color:var(--muted);cursor:pointer}
+    .reset:hover{color:var(--ink);border-color:var(--accent)}
+    .flag{font-size:11px;font-weight:800;color:var(--amber);background:#fff3d6;border-radius:6px;padding:1px 6px;margin-left:4px}
+    .src{font-size:12px;color:var(--muted)}
+    .footer{margin-top:28px;text-align:center;color:var(--muted);font-size:14px}
+    ul{margin:6px 0 0 20px;padding:0}li{margin:5px 0}
+    @media(max-width:900px){.hero{padding:26px}.span-3,.span-4,.span-5,.span-6,.span-7,.span-8{grid-column:span 12}.matrix{font-size:14px}.ms .when{margin-left:0;width:100%}}
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <nav class="nav">
+    <b>GMU&nbsp;PhD</b>
+    <a href="index.html">v2 · Dashboard</a>
+    <a href="v3.html">v3 · CRM</a>
+    <a href="v4.html">v4 · Control Center</a>
+    <a href="v5.html" class="active">v5 · Project Plan</a>
+    <span class="spacer"></span>
+    <a href="https://github.com/ocean-Go/GMU-PhD" target="_blank" rel="noopener">GitHub ↗</a>
+  </nav>
+
+  <section class="hero">
+    <div class="eyebrow">GMU Public Policy PhD · Project Plan v5</div>
+    <h1>Hui Ding（丁惠）· 申请项目计划</h1>
+    <p class="subtitle">把申请当成一个有终点的项目来管理：清晰的目标、按 milestone 推进、每个里程碑有明确的完成标准（exit criteria），并对 GMU 官方要求做每周一次的验证。</p>
+    <div class="goal"><span class="dot"></span>项目目标：成功获得 GMU Schar School Public Policy PhD 录取（Fall 2027 入学）</div>
+    <div class="countdown" id="countdown" aria-live="polite">
+      <div class="cdcell"><div class="num" id="cd-days">—</div><div class="lab">Days to Submit</div></div>
+      <div class="cdcell"><div class="num" id="cd-weeks">—</div><div class="lab">Weeks</div></div>
+      <div class="cdcell"><div class="num" id="cd-months">—</div><div class="lab">Months</div></div>
+      <div class="cdcell"><div class="num">~2026-12</div><div class="lab">Target Submit</div></div>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card span-4"><div class="kpi" id="ms-pct">10%</div><h3>里程碑完成度</h3><div class="progress"><div class="bar" id="ms-bar" style="width:10%"></div></div><p class="muted small" id="ms-note">勾选下方里程碑后自动更新（保存在本机）。</p></div>
+    <div class="card span-4"><div class="kpi">10</div><h3>里程碑总数</h3><p class="muted small">M1 研究定位 → M10 录取。每个里程碑都有完成标准。</p></div>
+    <div class="card span-4"><div class="kpi">每周</div><h3>信息验证频率</h3><p class="muted small">GMU 官方要求每 7 天复核一次，详见下方验证面板。</p></div>
+  </section>
+
+  <!-- ======== WEEKLY VERIFICATION ======== -->
+  <section class="grid">
+    <div class="card span-12">
+      <h2>GMU 信息验证面板</h2>
+      <p class="muted small">机制：页面内置“上次验证日期”，到期（满 7 天）后自动提示重新核对官网。你也可以在自己核对后点“标记为今天已验证”。</p>
+      <div class="verify" id="verify-box">
+        <div>
+          <div class="vstat" id="verify-stat">检查中…</div>
+          <div class="small muted" id="verify-detail"></div>
+        </div>
+        <span class="spacer"></span>
+        <button class="btn" id="verify-btn" type="button">标记为今天已验证</button>
+        <button class="reset" id="verify-reset" type="button">恢复系统验证日期</button>
+      </div>
+      <p class="small muted" style="margin-top:12px">每周验证清单（逐项核对官网，发现变化即更新本页）：
+        ① Fall 2027 申请开放日期与截止日期　② GRE 是否仍要求　③ 推荐信数量　④ Goals statement 字数　⑤ Writing sample 页数　⑥ TOEFL/IELTS 最低分与豁免规则　⑦ 申请费。</p>
+    </div>
+  </section>
+
+  <!-- ======== GMU REQUIREMENTS ======== -->
+  <section class="grid">
+    <div class="card span-12">
+      <h2>GMU 申请流程与要求 <span class="small muted" id="req-asof">（上次核对：2026-06-19）</span></h2>
+      <p class="muted small">来源：Schar School 官网与 GMU 目录。<strong>标 <span class="flag">待官网确认</span> 的项目随申请季更新，须在 Fall 2027 通道开放后核实。</strong></p>
+      <table class="matrix">
+        <tr><th style="width:22%">项目</th><th style="width:40%">要求</th><th>说明 / 状态</th></tr>
+        <tr><td><strong>入学学期</strong></td><td>仅 Fall（不收 Spring）</td><td>Fall 2027 申请通道预计 <strong>2026 年 9 月</strong>开放。</td></tr>
+        <tr><td><strong>申请截止</strong></td><td>历史上 Priority ≈ 12/15，Final ≈ 3/1 <span class="flag">待官网确认</span></td><td>Fall 2027 具体日期未公布；本计划暂以 <strong>2026 年 12 月</strong>为提交目标，留缓冲。</td></tr>
+        <tr><td><strong>GRE</strong></td><td>要求，ETS 校代码 <strong>5827</strong>，5 年内有效 <span class="flag">待官网确认</span></td><td>GRE 政策各校常变动，列入每周验证项；若仍要求需尽早预约考试（见 M4）。</td></tr>
+        <tr><td><strong>推荐信</strong></td><td><strong>3 封</strong>（建议至少 1 封来自学术界）</td><td>对应 M6；提前 4–6 周邀请推荐人。</td></tr>
+        <tr><td><strong>Goals Statement</strong></td><td><strong>750–1000 字</strong>，说明学术与职业目标</td><td>对应 M3；与 SOP 主线一致。</td></tr>
+        <tr><td><strong>Writing Sample</strong></td><td>约 <strong>10–25 页</strong>（报告 / 论文 / seminar paper）</td><td>对应 M7；体现研究与分析能力。</td></tr>
+        <tr><td><strong>简历 / CV</strong></td><td>必需</td><td>对应 M3；把行业经历转译为研究潜力。</td></tr>
+        <tr><td><strong>成绩单</strong></td><td>申请时可用非官方成绩单；录取后交官方件</td><td>境外学历另有要求（可能需 WES 认证，需核实）。</td></tr>
+        <tr><td><strong>英语成绩</strong></td><td>TOEFL 总分 <strong>≥88</strong>（各部分 ≥20）/ IELTS <strong>≥6.5</strong></td><td>若最高学历在豁免国家可免；非英语母语需确认是否豁免（见 M4）。</td></tr>
+        <tr><td><strong>申请费</strong></td><td>$75（境内）/ <strong>$80（国际）</strong></td><td>留意可能的 fee waiver。</td></tr>
+        <tr><td><strong>理想背景</strong></td><td>≈ 微积分 I + 统计学基础 + 经济学与政府背景</td><td>如有缺口，可在申请文书中说明补强计划。</td></tr>
+        <tr><td><strong>资助</strong></td><td>GRA（研究助理）面向全日制博士；申请中勾选意向</td><td>提供学费减免 + 津贴（每周约 20 小时）。</td></tr>
+      </table>
+      <p class="src" style="margin-top:10px">官方链接：
+        <a href="https://schar.gmu.edu/admissions/phd-admissions" target="_blank" rel="noopener">PhD Admissions</a> ·
+        <a href="https://schar.gmu.edu/programs/phd-programs/phd-public-policy/how-apply-public-policy-doctoral-program" target="_blank" rel="noopener">How to Apply (Public Policy Doctoral)</a> ·
+        <a href="https://catalog.gmu.edu/colleges-schools/policy-government/public-policy-phd/" target="_blank" rel="noopener">Catalog</a> ·
+        联系：scharGR@gmu.edu / 703-993-8099
+      </p>
+    </div>
+  </section>
+
+  <!-- ======== MILESTONES ======== -->
+  <section class="grid">
+    <div class="card span-12">
+      <h2 style="display:flex;align-items:center;justify-content:space-between;gap:12px">里程碑路线图 <button class="reset" id="ms-reset" type="button">重置进度</button></h2>
+      <p class="muted small">勾选 = 该里程碑达到完成标准。进度保存在本机浏览器（localStorage）。</p>
+      <div id="milestones">
+        <div class="ms" data-id="m1"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M1</span><h3>研究定位锁定</h3><span class="when">2026 Q2 · 进行中</span></div><div class="exit"><b>完成标准：</b>核心研究问题 + 三个子问题（firm survival / misallocation / supply chain）定稿，方向与 GMU 匹配点写清。</div></div></div>
+        <div class="ms" data-id="m2"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M2</span><h3>GMU 要求与流程已核实</h3><span class="when">2026-06 · 已完成（每周复核）</span></div><div class="exit"><b>完成标准：</b>上方要求表填好并通过每周验证；截止日期、GRE 政策、英语豁免三项有明确结论。</div></div></div>
+        <div class="ms" data-id="m3"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M3</span><h3>核心文书初稿</h3><span class="when">2026 May–Aug</span></div><div class="exit"><b>完成标准：</b>Goals Statement（750–1000 字）、Research Statement（2–3 页）、CV 三份初稿完成。</div></div></div>
+        <div class="ms" data-id="m4"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M4</span><h3>标化与语言考试</h3><span class="when">2026 Jun–Sep</span></div><div class="exit"><b>完成标准：</b>确认 GRE 是否要求；如需则考完并送分（5827）；确认英语成绩是否豁免，否则考到 TOEFL≥88 / IELTS≥6.5。</div></div></div>
+        <div class="ms" data-id="m5"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M5</span><h3>教授沟通（CRM 第一轮）</h3><span class="when">2026 Jul–Sep</span></div><div class="exit"><b>完成标准：</b>向 2–3 位（Reinert / Kugler 等）发出个性化首封 + 7 天 follow-up；记录回复。详见 <a href="v3.html">v3 CRM</a>。</div></div></div>
+        <div class="ms" data-id="m6"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M6</span><h3>推荐信落实</h3><span class="when">2026 Aug–Oct</span></div><div class="exit"><b>完成标准：</b>3 位推荐人（≥1 学术）确认愿写，并已收到系统邀请、提供材料包。</div></div></div>
+        <div class="ms" data-id="m7"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M7</span><h3>Writing Sample 定稿</h3><span class="when">2026 Sep–Oct</span></div><div class="exit"><b>完成标准：</b>一份 10–25 页、能体现研究与分析能力的样章定稿。</div></div></div>
+        <div class="ms" data-id="m8"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M8</span><h3>材料整合与提交</h3><span class="when">2026 Oct–Dec</span></div><div class="exit"><b>完成标准：</b>所有材料按官网清单核对无误，在截止日前完成网申提交并勾选 GRA 资助意向。</div></div></div>
+        <div class="ms" data-id="m9"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M9</span><h3>面试与跟进</h3><span class="when">2026 Dec–2027 Feb</span></div><div class="exit"><b>完成标准：</b>完成可能的面试 / 教授深聊；及时回应招生办与导师问询。</div></div></div>
+        <div class="ms" data-id="m10"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M10</span><h3>录取决定 🎯</h3><span class="when">2027 Feb–Apr</span></div><div class="exit"><b>完成标准：</b>收到录取与资助决定；确认入学。</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card span-12">
+      <h2>关键路径与依赖</h2>
+      <table class="matrix">
+        <tr><th>依赖关系</th><th>含义</th></tr>
+        <tr><td>M1 → M3</td><td>研究定位决定文书内容；先锁问题再写。</td></tr>
+        <tr><td>M2 → M4 / M8</td><td>验证结果决定是否考 GRE、是否需英语成绩、以及提交截止日。</td></tr>
+        <tr><td>M4（GRE）= 长前置项</td><td>若仍要求，需 4–8 周备考 + 送分周期；应最早启动，避免卡 M8。</td></tr>
+        <tr><td>M5 → M6</td><td>教授回复有助于锁定学术推荐人。</td></tr>
+        <tr><td>M3 + M6 + M7 → M8</td><td>文书、推荐信、样章齐备才能提交。</td></tr>
+      </table>
+      <p class="muted small" style="margin-top:10px">提示：M4 与 M2 是最不确定、前置最长的两项，建议优先消除不确定性。</p>
+    </div>
+  </section>
+
+  <div class="footer">GMU‑PhD Project Plan · Built for Hui Ding · Version 5 · Milestone-driven · 信息每周验证</div>
+</main>
+
+<script>
+  // ---- Deadline countdown (target ~Dec 2026 submission) ----
+  (function(){
+    var target = new Date('2026-12-01T00:00:00');
+    function render(){
+      var ms = target - new Date();
+      var days = Math.max(0, Math.ceil(ms / 86400000));
+      document.getElementById('cd-days').textContent = days;
+      document.getElementById('cd-weeks').textContent = Math.floor(days / 7);
+      document.getElementById('cd-months').textContent = Math.floor(days / 30.44);
+    }
+    render(); setInterval(render, 3600000);
+  })();
+
+  // ---- Milestone progress (localStorage) ----
+  (function(){
+    var KEY = 'gmu-phd-v5-milestones';
+    var rows = Array.prototype.slice.call(document.querySelectorAll('#milestones .ms'));
+    var pctEl = document.getElementById('ms-pct'), barEl = document.getElementById('ms-bar'), noteEl = document.getElementById('ms-note');
+    function load(){
+      var saved = {}; try{ saved = JSON.parse(localStorage.getItem(KEY) || '{}'); }catch(e){}
+      rows.forEach(function(r){ var b = r.querySelector('input'); b.checked = !!saved[r.dataset.id]; r.classList.toggle('done', b.checked); });
+    }
+    function save(){
+      var s = {}; rows.forEach(function(r){ s[r.dataset.id] = r.querySelector('input').checked; });
+      try{ localStorage.setItem(KEY, JSON.stringify(s)); }catch(e){}
+    }
+    function update(){
+      var done = rows.filter(function(r){ return r.querySelector('input').checked; }).length;
+      var pct = Math.round(done / rows.length * 100);
+      pctEl.textContent = pct + '%'; barEl.style.width = pct + '%';
+      noteEl.textContent = done + ' / ' + rows.length + ' 个里程碑达成。';
+    }
+    rows.forEach(function(r){ r.querySelector('input').addEventListener('change', function(){ r.classList.toggle('done', this.checked); save(); update(); }); });
+    document.getElementById('ms-reset').addEventListener('click', function(){ rows.forEach(function(r){ var b=r.querySelector('input'); b.checked=false; r.classList.remove('done'); }); save(); update(); });
+    load(); update();
+  })();
+
+  // ---- Weekly verification mechanism ----
+  (function(){
+    var KEY = 'gmu-phd-v5-verified';      // user override date (YYYY-MM-DD)
+    var SYSTEM_VERIFIED = '2026-06-19';    // date Claude last verified the requirements table
+    var PERIOD_DAYS = 7;
+    var box = document.getElementById('verify-box'), stat = document.getElementById('verify-stat'), detail = document.getElementById('verify-detail');
+    function parse(d){ return new Date(d + 'T00:00:00'); }
+    function fmt(dt){ return dt.toISOString().slice(0,10); }
+    function lastVerified(){
+      var u = null; try{ u = localStorage.getItem(KEY); }catch(e){}
+      var s = parse(SYSTEM_VERIFIED);
+      if(u){ var ud = parse(u); return ud > s ? ud : s; }
+      return s;
+    }
+    function render(){
+      var last = lastVerified();
+      var due = new Date(last.getTime() + PERIOD_DAYS * 86400000);
+      var now = new Date(); now.setHours(0,0,0,0);
+      var overdue = now >= due;
+      var daysLeft = Math.ceil((due - now) / 86400000);
+      box.classList.toggle('due', overdue); box.classList.toggle('ok', !overdue);
+      if(overdue){
+        stat.textContent = '⚠️ 信息验证已到期 — 请重新核对 GMU 官网';
+        detail.textContent = '上次验证：' + fmt(last) + '；应于 ' + fmt(due) + ' 前复核（已过期 ' + Math.abs(daysLeft) + ' 天）。';
+      } else {
+        stat.textContent = '✓ 信息为最新';
+        detail.textContent = '上次验证：' + fmt(last) + '；下次验证：' + fmt(due) + '（剩余 ' + daysLeft + ' 天）。';
+      }
+    }
+    document.getElementById('verify-btn').addEventListener('click', function(){
+      var today = new Date(); today.setHours(0,0,0,0);
+      try{ localStorage.setItem(KEY, fmt(today)); }catch(e){}
+      render();
+    });
+    document.getElementById('verify-reset').addEventListener('click', function(){
+      try{ localStorage.removeItem(KEY); }catch(e){}
+      render();
+    });
+    render();
+  })();
+</script>
+</body>
+</html>
