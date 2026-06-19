@@ -7,6 +7,7 @@
   <style>
     :root{--bg:#f7f4ee;--card:#fff;--ink:#202124;--muted:#6b7280;--line:#e5ded2;--accent:#8a5a28;--accent2:#1f4e5f;--soft:#efe7da;--green:#2f6f4e;--red:#9f3a38;--blue:#2f5f8f;--amber:#a16207;--shadow:0 18px 50px rgba(32,33,36,.08)}
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;background:radial-gradient(circle at top left,#fff7e8 0,transparent 32%),var(--bg);color:var(--ink);line-height:1.65}
     a{color:var(--accent2);text-decoration:none}
     .wrap{max-width:1240px;margin:0 auto;padding:24px 22px 72px}
@@ -55,6 +56,23 @@
     .ms.done h3{text-decoration:line-through;color:var(--muted)}
     .ms .exit{font-size:13px;color:#444;margin-top:4px}
     .ms .exit b{color:var(--accent)}
+    .ms{scroll-margin-top:84px}
+    .ms.flash{animation:flash 1.8s ease}
+    @keyframes flash{0%{background:#fff3d6}100%{background:transparent}}
+    /* top timeline */
+    .tlcard{background:linear-gradient(135deg,#fff,#f7f0e4);border:1px solid var(--line);border-radius:22px;padding:22px 20px 14px;box-shadow:var(--shadow);margin-top:22px}
+    .tlcard h2{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+    .tl{display:flex;overflow-x:auto;padding:18px 2px 8px;scrollbar-width:thin}
+    .tlnode{position:relative;flex:1 0 92px;text-align:center;padding-top:34px;color:inherit;cursor:pointer}
+    .tlnode .tldot{position:absolute;top:0;left:50%;transform:translateX(-50%);width:30px;height:30px;border-radius:999px;background:var(--card);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;z-index:2;transition:transform .15s ease}
+    .tlnode:not(:first-child):before{content:"";position:absolute;top:15px;left:-50%;width:100%;height:3px;background:var(--line);z-index:1}
+    .tlnode:hover .tldot{transform:translateX(-50%) scale(1.12);border-color:var(--accent)}
+    .tlnode.done .tldot{background:var(--green);color:#fff;border-color:var(--green)}
+    .tlnode.done:before{background:var(--green)}
+    .tlnode.current .tldot{border-color:var(--accent2);color:var(--accent2);box-shadow:0 0 0 4px rgba(31,78,95,.12)}
+    .tllab{display:block;font-size:12px;font-weight:800;margin-top:8px;padding:0 4px;line-height:1.25}
+    .tlwhen{display:block;font-size:10px;color:var(--muted);margin-top:2px}
+    .tlhint{font-size:12px;color:var(--muted);font-weight:600}
     /* verification panel */
     .verify{border:1px solid var(--line);border-radius:18px;padding:16px 18px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
     .verify.ok{background:#f1f8f3;border-color:#cfe6d8}
@@ -96,6 +114,23 @@
       <div class="cdcell"><div class="num">~2026-12</div><div class="lab">Target Submit</div></div>
     </div>
   </section>
+
+  <!-- ======== TOP TIMELINE (clickable) ======== -->
+  <div class="tlcard">
+    <h2>申请时间轴 <span class="tlhint">— 点击任意里程碑直接跳到对应内容</span></h2>
+    <div class="tl" id="timeline">
+      <a class="tlnode current" data-target="m1" href="#m1"><span class="tldot">1</span><span class="tllab">研究定位</span><span class="tlwhen">26 Q2</span></a>
+      <a class="tlnode" data-target="m2" href="#m2"><span class="tldot">2</span><span class="tllab">要求核实</span><span class="tlwhen">26-06</span></a>
+      <a class="tlnode" data-target="m3" href="#m3"><span class="tldot">3</span><span class="tllab">核心文书</span><span class="tlwhen">May–Aug</span></a>
+      <a class="tlnode" data-target="m4" href="#m4"><span class="tldot">4</span><span class="tllab">标化/语言</span><span class="tlwhen">Jun–Sep</span></a>
+      <a class="tlnode" data-target="m5" href="#m5"><span class="tldot">5</span><span class="tllab">教授沟通</span><span class="tlwhen">Jul–Sep</span></a>
+      <a class="tlnode" data-target="m6" href="#m6"><span class="tldot">6</span><span class="tllab">推荐信</span><span class="tlwhen">Aug–Oct</span></a>
+      <a class="tlnode" data-target="m7" href="#m7"><span class="tldot">7</span><span class="tllab">Writing Sample</span><span class="tlwhen">Sep–Oct</span></a>
+      <a class="tlnode" data-target="m8" href="#m8"><span class="tldot">8</span><span class="tllab">提交</span><span class="tlwhen">Oct–Dec</span></a>
+      <a class="tlnode" data-target="m9" href="#m9"><span class="tldot">9</span><span class="tllab">面试跟进</span><span class="tlwhen">Dec–Feb</span></a>
+      <a class="tlnode" data-target="m10" href="#m10"><span class="tldot">★</span><span class="tllab">录取</span><span class="tlwhen">27 Q1</span></a>
+    </div>
+  </div>
 
   <section class="grid">
     <div class="card span-4"><div class="kpi" id="ms-pct">10%</div><h3>里程碑完成度</h3><div class="progress"><div class="bar" id="ms-bar" style="width:10%"></div></div><p class="muted small" id="ms-note">勾选下方里程碑后自动更新（保存在本机）。</p></div>
@@ -157,16 +192,16 @@
       <h2 style="display:flex;align-items:center;justify-content:space-between;gap:12px">里程碑路线图 <button class="reset" id="ms-reset" type="button">重置进度</button></h2>
       <p class="muted small">勾选 = 该里程碑达到完成标准。进度保存在本机浏览器（localStorage）。</p>
       <div id="milestones">
-        <div class="ms" data-id="m1"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M1</span><h3>研究定位锁定</h3><span class="when">2026 Q2 · 进行中</span></div><div class="exit"><b>完成标准：</b>核心研究问题 + 三个子问题（firm survival / misallocation / supply chain）定稿，方向与 GMU 匹配点写清。</div></div></div>
-        <div class="ms" data-id="m2"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M2</span><h3>GMU 要求与流程已核实</h3><span class="when">2026-06 · 已完成（每周复核）</span></div><div class="exit"><b>完成标准：</b>上方要求表填好并通过每周验证；截止日期、GRE 政策、英语豁免三项有明确结论。</div></div></div>
-        <div class="ms" data-id="m3"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M3</span><h3>核心文书初稿</h3><span class="when">2026 May–Aug</span></div><div class="exit"><b>完成标准：</b>Goals Statement（750–1000 字）、Research Statement（2–3 页）、CV 三份初稿完成。</div></div></div>
-        <div class="ms" data-id="m4"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M4</span><h3>标化与语言考试</h3><span class="when">2026 Jun–Sep</span></div><div class="exit"><b>完成标准：</b>确认 GRE 是否要求；如需则考完并送分（5827）；确认英语成绩是否豁免，否则考到 TOEFL≥88 / IELTS≥6.5。</div></div></div>
-        <div class="ms" data-id="m5"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M5</span><h3>教授沟通（CRM 第一轮）</h3><span class="when">2026 Jul–Sep</span></div><div class="exit"><b>完成标准：</b>向 2–3 位（Reinert / Kugler 等）发出个性化首封 + 7 天 follow-up；记录回复。详见 <a href="v3.html">v3 CRM</a>。</div></div></div>
-        <div class="ms" data-id="m6"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M6</span><h3>推荐信落实</h3><span class="when">2026 Aug–Oct</span></div><div class="exit"><b>完成标准：</b>3 位推荐人（≥1 学术）确认愿写，并已收到系统邀请、提供材料包。</div></div></div>
-        <div class="ms" data-id="m7"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M7</span><h3>Writing Sample 定稿</h3><span class="when">2026 Sep–Oct</span></div><div class="exit"><b>完成标准：</b>一份 10–25 页、能体现研究与分析能力的样章定稿。</div></div></div>
-        <div class="ms" data-id="m8"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M8</span><h3>材料整合与提交</h3><span class="when">2026 Oct–Dec</span></div><div class="exit"><b>完成标准：</b>所有材料按官网清单核对无误，在截止日前完成网申提交并勾选 GRA 资助意向。</div></div></div>
-        <div class="ms" data-id="m9"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M9</span><h3>面试与跟进</h3><span class="when">2026 Dec–2027 Feb</span></div><div class="exit"><b>完成标准：</b>完成可能的面试 / 教授深聊；及时回应招生办与导师问询。</div></div></div>
-        <div class="ms" data-id="m10"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M10</span><h3>录取决定 🎯</h3><span class="when">2027 Feb–Apr</span></div><div class="exit"><b>完成标准：</b>收到录取与资助决定；确认入学。</div></div></div>
+        <div class="ms" id="m1" data-id="m1"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M1</span><h3>研究定位锁定</h3><span class="when">2026 Q2 · 进行中</span></div><div class="exit"><b>完成标准：</b>核心研究问题 + 三个子问题（firm survival / misallocation / supply chain）定稿，方向与 GMU 匹配点写清。</div></div></div>
+        <div class="ms" id="m2" data-id="m2"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M2</span><h3>GMU 要求与流程已核实</h3><span class="when">2026-06 · 已完成（每周复核）</span></div><div class="exit"><b>完成标准：</b>上方要求表填好并通过每周验证；截止日期、GRE 政策、英语豁免三项有明确结论。</div></div></div>
+        <div class="ms" id="m3" data-id="m3"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M3</span><h3>核心文书初稿</h3><span class="when">2026 May–Aug</span></div><div class="exit"><b>完成标准：</b>Goals Statement（750–1000 字）、Research Statement（2–3 页）、CV 三份初稿完成。</div></div></div>
+        <div class="ms" id="m4" data-id="m4"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M4</span><h3>标化与语言考试</h3><span class="when">2026 Jun–Sep</span></div><div class="exit"><b>完成标准：</b>确认 GRE 是否要求；如需则考完并送分（5827）；确认英语成绩是否豁免，否则考到 TOEFL≥88 / IELTS≥6.5。</div></div></div>
+        <div class="ms" id="m5" data-id="m5"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M5</span><h3>教授沟通（CRM 第一轮）</h3><span class="when">2026 Jul–Sep</span></div><div class="exit"><b>完成标准：</b>向 2–3 位（Reinert / Kugler 等）发出个性化首封 + 7 天 follow-up；记录回复。详见 <a href="v3.html">v3 CRM</a>。</div></div></div>
+        <div class="ms" id="m6" data-id="m6"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M6</span><h3>推荐信落实</h3><span class="when">2026 Aug–Oct</span></div><div class="exit"><b>完成标准：</b>3 位推荐人（≥1 学术）确认愿写，并已收到系统邀请、提供材料包。</div></div></div>
+        <div class="ms" id="m7" data-id="m7"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M7</span><h3>Writing Sample 定稿</h3><span class="when">2026 Sep–Oct</span></div><div class="exit"><b>完成标准：</b>一份 10–25 页、能体现研究与分析能力的样章定稿。</div></div></div>
+        <div class="ms" id="m8" data-id="m8"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M8</span><h3>材料整合与提交</h3><span class="when">2026 Oct–Dec</span></div><div class="exit"><b>完成标准：</b>所有材料按官网清单核对无误，在截止日前完成网申提交并勾选 GRA 资助意向。</div></div></div>
+        <div class="ms" id="m9" data-id="m9"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M9</span><h3>面试与跟进</h3><span class="when">2026 Dec–2027 Feb</span></div><div class="exit"><b>完成标准：</b>完成可能的面试 / 教授深聊；及时回应招生办与导师问询。</div></div></div>
+        <div class="ms" id="m10" data-id="m10"><span class="mcheck"><input type="checkbox"></span><div class="body"><div class="top"><span class="code">M10</span><h3>录取决定 🎯</h3><span class="when">2027 Feb–Apr</span></div><div class="exit"><b>完成标准：</b>收到录取与资助决定；确认入学。</div></div></div>
       </div>
     </div>
   </section>
@@ -221,6 +256,10 @@
       var pct = Math.round(done / rows.length * 100);
       pctEl.textContent = pct + '%'; barEl.style.width = pct + '%';
       noteEl.textContent = done + ' / ' + rows.length + ' 个里程碑达成。';
+      rows.forEach(function(r){
+        var node = document.querySelector('#timeline .tlnode[data-target="' + r.dataset.id + '"]');
+        if(node) node.classList.toggle('done', r.querySelector('input').checked);
+      });
     }
     rows.forEach(function(r){ r.querySelector('input').addEventListener('change', function(){ r.classList.toggle('done', this.checked); save(); update(); }); });
     document.getElementById('ms-reset').addEventListener('click', function(){ rows.forEach(function(r){ var b=r.querySelector('input'); b.checked=false; r.classList.remove('done'); }); save(); update(); });
@@ -266,6 +305,16 @@
       render();
     });
     render();
+  })();
+
+  // ---- Timeline: click a milestone node -> jump + highlight ----
+  (function(){
+    document.querySelectorAll('#timeline .tlnode').forEach(function(n){
+      n.addEventListener('click', function(){
+        var t = document.getElementById(n.dataset.target);
+        if(t){ t.classList.remove('flash'); void t.offsetWidth; t.classList.add('flash'); }
+      });
+    });
   })();
 </script>
 </body>
